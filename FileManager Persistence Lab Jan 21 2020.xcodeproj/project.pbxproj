@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F358E9E23D7BFE700C7B92C /* NetworkHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 9F358E9D23D7BFE700C7B92C /* NetworkHelper */; };
+		9F358EA123D7C01F00C7B92C /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F358EA023D7C01F00C7B92C /* ImageKit */; };
+		9F358EA423D7C0DE00C7B92C /* persistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EA323D7C0DE00C7B92C /* persistenceHelper.swift */; };
+		9F358EA623D7C12900C7B92C /* FileManger + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EA523D7C12900C7B92C /* FileManger + Extension.swift */; };
+		9F358EA923D7C1D400C7B92C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EA823D7C1D400C7B92C /* Model.swift */; };
 		9FE9961823D7B5C800C32291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9961723D7B5C800C32291 /* AppDelegate.swift */; };
 		9FE9961A23D7B5C800C32291 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9961923D7B5C800C32291 /* SceneDelegate.swift */; };
 		9FE9961C23D7B5C800C32291 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9961B23D7B5C800C32291 /* ViewController.swift */; };
@@ -27,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F358EA323D7C0DE00C7B92C /* persistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = persistenceHelper.swift; sourceTree = "<group>"; };
+		9F358EA523D7C12900C7B92C /* FileManger + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManger + Extension.swift"; sourceTree = "<group>"; };
+		9F358EA823D7C1D400C7B92C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9FE9961423D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FileManager Persistence Lab Jan 21 2020.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE9961723D7B5C800C32291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FE9961923D7B5C800C32291 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F358E9E23D7BFE700C7B92C /* NetworkHelper in Frameworks */,
+				9F358EA123D7C01F00C7B92C /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +68,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F358EA223D7C0A200C7B92C /* Data Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				9F358EA323D7C0DE00C7B92C /* persistenceHelper.swift */,
+				9F358EA523D7C12900C7B92C /* FileManger + Extension.swift */,
+			);
+			path = "Data Persistence";
+			sourceTree = "<group>";
+		};
+		9F358EA723D7C19F00C7B92C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				9F358EA823D7C1D400C7B92C /* Model.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		9FE9960B23D7B5C700C32291 = {
 			isa = PBXGroup;
 			children = (
+				9F358EA723D7C19F00C7B92C /* New Group */,
+				9F358EA223D7C0A200C7B92C /* Data Persistence */,
 				9FE9961623D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020 */,
 				9FE9962D23D7B5CD00C32291 /* FileManager Persistence Lab Jan 21 2020Tests */,
 				9FE9961523D7B5C800C32291 /* Products */,
@@ -79,11 +108,11 @@
 		9FE9961623D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020 */ = {
 			isa = PBXGroup;
 			children = (
-				9FE9961723D7B5C800C32291 /* AppDelegate.swift */,
-				9FE9961923D7B5C800C32291 /* SceneDelegate.swift */,
 				9FE9961B23D7B5C800C32291 /* ViewController.swift */,
 				9FE9961D23D7B5C800C32291 /* Main.storyboard */,
+				9FE9961723D7B5C800C32291 /* AppDelegate.swift */,
 				9FE9962023D7B5CC00C32291 /* Assets.xcassets */,
+				9FE9961923D7B5C800C32291 /* SceneDelegate.swift */,
 				9FE9962223D7B5CC00C32291 /* LaunchScreen.storyboard */,
 				9FE9962523D7B5CC00C32291 /* Info.plist */,
 			);
@@ -115,6 +144,10 @@
 			dependencies = (
 			);
 			name = "FileManager Persistence Lab Jan 21 2020";
+			packageProductDependencies = (
+				9F358E9D23D7BFE700C7B92C /* NetworkHelper */,
+				9F358EA023D7C01F00C7B92C /* ImageKit */,
+			);
 			productName = "FileManager Persistence Lab Jan 21 2020";
 			productReference = 9FE9961423D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +198,10 @@
 				Base,
 			);
 			mainGroup = 9FE9960B23D7B5C700C32291;
+			packageReferences = (
+				9F358E9C23D7BFE700C7B92C /* XCRemoteSwiftPackageReference "NetworkHelperSPM" */,
+				9F358E9F23D7C01F00C7B92C /* XCRemoteSwiftPackageReference "ImageKit" */,
+			);
 			productRefGroup = 9FE9961523D7B5C800C32291 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -203,6 +240,9 @@
 				9FE9961C23D7B5C800C32291 /* ViewController.swift in Sources */,
 				9FE9961823D7B5C800C32291 /* AppDelegate.swift in Sources */,
 				9FE9961A23D7B5C800C32291 /* SceneDelegate.swift in Sources */,
+				9F358EA923D7C1D400C7B92C /* Model.swift in Sources */,
+				9F358EA423D7C0DE00C7B92C /* persistenceHelper.swift in Sources */,
+				9F358EA623D7C12900C7B92C /* FileManger + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +509,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F358E9C23D7BFE700C7B92C /* XCRemoteSwiftPackageReference "NetworkHelperSPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/NetworkHelperSPM";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+		9F358E9F23D7C01F00C7B92C /* XCRemoteSwiftPackageReference "ImageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/ImageKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F358E9D23D7BFE700C7B92C /* NetworkHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F358E9C23D7BFE700C7B92C /* XCRemoteSwiftPackageReference "NetworkHelperSPM" */;
+			productName = NetworkHelper;
+		};
+		9F358EA023D7C01F00C7B92C /* ImageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F358E9F23D7C01F00C7B92C /* XCRemoteSwiftPackageReference "ImageKit" */;
+			productName = ImageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9FE9960C23D7B5C700C32291 /* Project object */;
 }
