@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0F4BE923D8E3FA00DC15E8 /* PhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F4BE823D8E3FA00DC15E8 /* PhotoCellCollectionViewCell.swift */; };
+		9F0F4BEB23D8F0FC00DC15E8 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F4BEA23D8F0FC00DC15E8 /* DetailVC.swift */; };
 		9F358E9E23D7BFE700C7B92C /* NetworkHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 9F358E9D23D7BFE700C7B92C /* NetworkHelper */; };
 		9F358EA123D7C01F00C7B92C /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F358EA023D7C01F00C7B92C /* ImageKit */; };
 		9F358EA423D7C0DE00C7B92C /* persistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EA323D7C0DE00C7B92C /* persistenceHelper.swift */; };
 		9F358EA623D7C12900C7B92C /* FileManger + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EA523D7C12900C7B92C /* FileManger + Extension.swift */; };
 		9F358EA923D7C1D400C7B92C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EA823D7C1D400C7B92C /* Model.swift */; };
+		9F358EAD23D7CAE200C7B92C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F358EAC23D7CAE200C7B92C /* APIClient.swift */; };
 		9FE9961823D7B5C800C32291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9961723D7B5C800C32291 /* AppDelegate.swift */; };
 		9FE9961A23D7B5C800C32291 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9961923D7B5C800C32291 /* SceneDelegate.swift */; };
 		9FE9961C23D7B5C800C32291 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9961B23D7B5C800C32291 /* ViewController.swift */; };
@@ -32,9 +35,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F0F4BE823D8E3FA00DC15E8 /* PhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		9F0F4BEA23D8F0FC00DC15E8 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		9F358EA323D7C0DE00C7B92C /* persistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = persistenceHelper.swift; sourceTree = "<group>"; };
 		9F358EA523D7C12900C7B92C /* FileManger + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManger + Extension.swift"; sourceTree = "<group>"; };
 		9F358EA823D7C1D400C7B92C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9F358EAC23D7CAE200C7B92C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9FE9961423D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FileManager Persistence Lab Jan 21 2020.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE9961723D7B5C800C32291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FE9961923D7B5C800C32291 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F0F4BE723D8DB6100DC15E8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9F0F4BE823D8E3FA00DC15E8 /* PhotoCellCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		9F358EA223D7C0A200C7B92C /* Data Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,18 +91,38 @@
 			path = "Data Persistence";
 			sourceTree = "<group>";
 		};
-		9F358EA723D7C19F00C7B92C /* New Group */ = {
+		9F358EA723D7C19F00C7B92C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				9F358EA823D7C1D400C7B92C /* Model.swift */,
 			);
-			path = "New Group";
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9F358EAA23D7C84200C7B92C /* Controllers  */ = {
+			isa = PBXGroup;
+			children = (
+				9FE9961B23D7B5C800C32291 /* ViewController.swift */,
+				9F0F4BEA23D8F0FC00DC15E8 /* DetailVC.swift */,
+			);
+			path = "Controllers ";
+			sourceTree = "<group>";
+		};
+		9F358EAB23D7CA9500C7B92C /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				9F358EAC23D7CAE200C7B92C /* APIClient.swift */,
+			);
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		9FE9960B23D7B5C700C32291 = {
 			isa = PBXGroup;
 			children = (
-				9F358EA723D7C19F00C7B92C /* New Group */,
+				9F0F4BE723D8DB6100DC15E8 /* Cell */,
+				9F358EAB23D7CA9500C7B92C /* APIClient */,
+				9F358EAA23D7C84200C7B92C /* Controllers  */,
+				9F358EA723D7C19F00C7B92C /* Model */,
 				9F358EA223D7C0A200C7B92C /* Data Persistence */,
 				9FE9961623D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020 */,
 				9FE9962D23D7B5CD00C32291 /* FileManager Persistence Lab Jan 21 2020Tests */,
@@ -108,7 +142,6 @@
 		9FE9961623D7B5C800C32291 /* FileManager Persistence Lab Jan 21 2020 */ = {
 			isa = PBXGroup;
 			children = (
-				9FE9961B23D7B5C800C32291 /* ViewController.swift */,
 				9FE9961D23D7B5C800C32291 /* Main.storyboard */,
 				9FE9961723D7B5C800C32291 /* AppDelegate.swift */,
 				9FE9962023D7B5CC00C32291 /* Assets.xcassets */,
@@ -238,11 +271,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FE9961C23D7B5C800C32291 /* ViewController.swift in Sources */,
+				9F358EAD23D7CAE200C7B92C /* APIClient.swift in Sources */,
 				9FE9961823D7B5C800C32291 /* AppDelegate.swift in Sources */,
 				9FE9961A23D7B5C800C32291 /* SceneDelegate.swift in Sources */,
 				9F358EA923D7C1D400C7B92C /* Model.swift in Sources */,
+				9F0F4BEB23D8F0FC00DC15E8 /* DetailVC.swift in Sources */,
 				9F358EA423D7C0DE00C7B92C /* persistenceHelper.swift in Sources */,
 				9F358EA623D7C12900C7B92C /* FileManger + Extension.swift in Sources */,
+				9F0F4BE923D8E3FA00DC15E8 /* PhotoCellCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

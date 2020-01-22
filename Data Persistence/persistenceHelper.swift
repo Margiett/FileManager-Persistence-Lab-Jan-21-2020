@@ -39,7 +39,7 @@ class PersistenceHelper {
         }
     }
     
-    static func loadEvents() throws -> [Pictures] {
+    static func loadPhotos() throws -> [Pictures] {
         let url = FileManager.pathToDocumentsDirectory(with: filename)
         if FileManager.default.fileExists(atPath: url.path) {
             if let data = FileManager.default.contents(atPath: url.path) {

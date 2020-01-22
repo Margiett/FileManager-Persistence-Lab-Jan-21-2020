@@ -9,12 +9,9 @@
 import Foundation
 
 extension FileManager {
-    
- 
     static func getDocumentsDirectory() -> URL {
        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
-
     static func pathToDocumentsDirectory(with fileName: String) -> URL {
         
         return getDocumentsDirectory().appendingPathComponent(fileName)
@@ -23,3 +20,4 @@ extension FileManager {
 
 //MARK: URLSession gives you access to the internet
 //MARK: FileManger: is interface to the contain of the file system. which allows you to create, read, update, and delete. update on def
+//MARK: .userDomainMask: making a personal folder to save the information.
