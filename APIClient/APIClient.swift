@@ -12,7 +12,7 @@ import NetworkHelper
 struct PhotoAPIClient {
     static func fetchPhoto(for searchQuery: String, completion: @escaping (Result<[Pictures], AppError>) -> ()) {
         
-        let searchQuery = searchQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        //let searchQuery = searchQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
         
         let endPointURL = "https://pixabay.com/api/?key=14991998-9d3da7e6735e6158dc94cd4b2&q="
         guard let url = URL(string: endPointURL) else {completion(.failure(.badURL(endPointURL)))
@@ -28,8 +28,8 @@ struct PhotoAPIClient {
                 case .success(let data):
                     do {
                         let searchResult = try
-                            JSONDecoder().decode([Pictures].self, from: data)
-                        completion(.success(searchResult))
+                            JSONDecoder().decode(Photos.self, from: data)
+                        completion(.success(searchResult.hits))
                     } catch {
                         completion(.failure(.decodingError(error)))
                     }

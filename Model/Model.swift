@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Photots: Codable{
+struct Photos: Codable{
     let hits: [Pictures]
 }
 
@@ -20,4 +20,9 @@ struct Pictures: Codable{
     let downloads: Int
     let user: String
     let previewURL: String
+    let webformatURL: String
+    let favorites: Int
+    let favedBy: String?
+    let tags: String
+   
 }

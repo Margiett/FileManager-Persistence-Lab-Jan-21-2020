@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
@@ -30,8 +31,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        searchPhoto()
+        photoCollection.delegate = self
+        photoCollection.dataSource = self 
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "photos" {
+              guard let detailVC = segue.destination as? DetailVC, let indexPath = photoCollection.indexPathsForSelectedItems?.first else {
+                  fatalError("segue did not work")
+              }
+              detailVC.selectedPhoto = photos[indexPath.row]
+          }
+      }
+    
     
     func searchPhoto(){
         PhotoAPIClient.fetchPhoto(for: "\(searchQuery)", completion: { [weak self] (result) in
@@ -40,6 +52,7 @@ class ViewController: UIViewController {
                 print("error \(appError)")
             case .success(let photos):
                 self?.photoDidSet = photos
+                dump(photos.self)
             }
         })
     }
@@ -60,11 +73,12 @@ extension ViewController: UICollectionViewDataSource {
         return photoDidSet.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCellCollectionViewCell else {
             fatalError("Could not type cast reusable cell")
         }
         let photoImage = photoDidSet[indexPath.row]
-        cell.configureCell(for: photoImage)
+        cell.PhotoConfigureCell(for: photoImage)
         return cell
     }
 }

@@ -59,7 +59,7 @@ class PersistenceHelper {
         return photos
     }
     
-    static func delete(photo index: Int) throws {
+    static func deletePhoto(photo index: Int) throws {
         photos.remove(at: index)
         do {
             try save()

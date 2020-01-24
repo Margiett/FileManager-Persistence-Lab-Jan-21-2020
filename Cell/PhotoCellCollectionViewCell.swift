@@ -10,14 +10,16 @@ import UIKit
 import ImageKit
 
 class PhotoCellCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var photoImage: UIImageView!
     
     
-    public func configureCell(for pic: Pictures) {
+    public func PhotoConfigureCell(for pic: Pictures) {
+        print("hi")
         
-        let imageURL = "https://pixabay.com/api/?key=14991998-9d3da7e6735e6158dc94cd4b2&q="
+//        let imageURL = "https://pixabay.com/api/?key=14991998-9d3da7e6735e6158dc94cd4b2&q="
         
-        photoImage.getImage(with: imageURL) { [weak self] (result) in
+        photoImage.getImage(with: pic.largeImageURL) { [weak self] (result) in
             switch result {
             case .failure:
                 DispatchQueue.main.async {

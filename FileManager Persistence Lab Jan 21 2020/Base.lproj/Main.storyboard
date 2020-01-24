@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="HXP-9k-3Dp" customClass="PhotoCellCollectionViewCell" customModule="FileManager_Persistence_Lab_Jan_21_2020" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="HXP-9k-3Dp" customClass="PhotoCellCollectionViewCell" customModule="FileManager_Persistence_Lab_Jan_21_2020" customModuleProvider="target">
                                         <rect key="frame" x="54" y="0.0" width="306" height="303"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3ie-nq-c5K">
@@ -42,7 +42,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="306" height="303"/>
                                         <connections>
-                                            <outlet property="photoImage" destination="6iQ-WJ-ulQ" id="aV4-Yh-oAK"/>
+                                            <outlet property="photoImage" destination="6iQ-WJ-ulQ" id="fEX-8l-tN3"/>
                                             <segue destination="Yi3-1v-Uuq" kind="show" id="uhD-oI-8vh"/>
                                         </connections>
                                     </collectionViewCell>
@@ -57,7 +57,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2UD-yj-FWx"/>
+                    <navigationItem key="navigationItem" title="View Controller" id="2UD-yj-FWx"/>
                     <connections>
                         <outlet property="photoCollection" destination="6N3-rE-ryg" id="tid-lj-VkI"/>
                         <outlet property="searchBar" destination="4me-cr-pbC" id="ZKF-AW-gat"/>
@@ -67,7 +67,7 @@
             </objects>
             <point key="canvasLocation" x="1576.8115942028987" y="114.50892857142857"/>
         </scene>
-        <!--DetailVC-->
+        <!--Detail-->
         <scene sceneID="u4H-Qa-hD0">
             <objects>
                 <viewController id="Yi3-1v-Uuq" customClass="DetailVC" customModule="FileManager_Persistence_Lab_Jan_21_2020" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,8 +83,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="A8w-j2-oLa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9TA-z8-YTB">
-                        <barButtonItem key="rightBarButtonItem" image="heart.fill" catalog="system" id="beA-St-Pfc"/>
+                    <navigationItem key="navigationItem" title="Detail" id="9TA-z8-YTB">
+                        <barButtonItem key="rightBarButtonItem" image="heart.fill" catalog="system" id="beA-St-Pfc">
+                            <connections>
+                                <action selector="addToFavesWith_sender:" destination="Yi3-1v-Uuq" id="fTy-8c-j6R"/>
+                                <segue destination="yzA-Fc-8Gf" kind="show" id="fwg-1F-Fuf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="favButton" destination="beA-St-Pfc" id="gFl-rp-HJX"/>
@@ -95,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="2426" y="504"/>
         </scene>
-        <!--Favorites-->
+        <!--Favorite -->
         <scene sceneID="KEn-fM-SMB">
             <objects>
-                <viewController id="yzA-Fc-8Gf" sceneMemberID="viewController">
+                <viewController id="yzA-Fc-8Gf" customClass="FaveVC" customModule="FileManager_Persistence_Lab_Jan_21_2020" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GZk-so-FvX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,7 +119,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Gq-ei-AeK">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FaveCell" id="9Gq-ei-AeK" customClass="FaveCVC" customModule="FileManager_Persistence_Lab_Jan_21_2020" customModuleProvider="target">
                                         <rect key="frame" x="6.5" y="0.0" width="401" height="324"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="omz-jy-N7z">
@@ -128,6 +133,9 @@
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="401" height="324"/>
+                                        <connections>
+                                            <outlet property="imagePhoto" destination="7R1-R2-kyT" id="ulc-cw-MeR"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -136,6 +144,10 @@
                         <viewLayoutGuide key="safeArea" id="QUJ-qw-0mN"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="suit.heart.fill" catalog="system" id="LZ7-T4-88a"/>
+                    <navigationItem key="navigationItem" title="Favorite " id="4Ed-8U-yAg"/>
+                    <connections>
+                        <outlet property="collectionView" destination="3tZ-Pm-yhA" id="san-DK-PlR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXO-w8-wmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,4 +197,7 @@
         <image name="photo.fill.on.rectangle.fill" catalog="system" width="64" height="48"/>
         <image name="suit.heart.fill" catalog="system" width="64" height="54"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fwg-1F-Fuf"/>
+    </inferredMetricsTieBreakers>
 </document>
