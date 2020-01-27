@@ -12,7 +12,7 @@ protocol faveCell: AnyObject {
     func didLongPress(_ faveCell: FaveCVC)
 
 }
-class FaveCVC: UICollectionViewCell {
+class FaveCVC: UITableViewCell {
     
     @IBOutlet weak var imagePhoto: UIImageView!
     

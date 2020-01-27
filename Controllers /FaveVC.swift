@@ -9,23 +9,30 @@
 import UIKit
 
 class FaveVC: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var favoriteTableView: UITableView!
     
-    var favorite = [Pictures](){
-        didSet{
-            DispatchQueue.main.async {
-                self.loadFaves()
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    var favorite = [Pictures]()
+//        didSet{
+//            DispatchQueue.main.async {
+////                self.loadFaves()
+//        self.collectionView.reloadData()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        favoriteTableView.dataSource = self
+        favoriteTableView.delegate = self
         loadFaves()
-        collectionView.dataSource = self
-        collectionView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadFaves()
+    }
+    //MARK: loadsFaves()
     func loadFaves() {
         do {
             favorite = try PersistenceHelper.loadPhotos().filter { $0.favedBy == "Margiett"}
@@ -33,25 +40,27 @@ class FaveVC: UIViewController {
             print("error")
         }
         DispatchQueue.main.async {
-            self.collectionView.reloadData()
+            self.favoriteTableView.reloadData()
         }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "favorites" {
-            guard let detailVC = segue.destination as? DetailVC, let indexPath = collectionView.indexPathsForSelectedItems?.first else {
-                fatalError("segue did not work")
-            }
-            detailVC.selectedPhoto = favorite[indexPath.row]
-        }
-    }
+    //MARK: Segue
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "favorites" {
+//            guard let detailVC = segue.destination as? DetailVC, let indexPath = favoriteTableView.indexPath(for: faveCell).first else {
+//                fatalError("segue did not work")
+//            }
+//            detailVC.selectedPhoto = favorite[indexPath.row]
+//        }
+//    }
 }
-
-extension FaveVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//MARK: DataSource
+extension FaveVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorite.count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FaveCell", for: indexPath) as? FaveCVC else {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FaveCell", for: indexPath) as? FaveCVC else {
             fatalError("could not type cast cell")
         }
         let selectedPhoto = favorite[indexPath.row]
@@ -60,10 +69,31 @@ extension FaveVC: UICollectionViewDataSource {
         return cell
     }
 }
+extension FaveVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let fav = favorite[indexPath.row]
+    }
+}
+    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return favorite.count
+//    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withReuseIdentifier: "FaveCell", for: indexPath) as? FaveCVC else {
+//            fatalError("could not type cast cell")
+//        }
+//        let selectedPhoto = favorite[indexPath.row]
+//        cell.configureCell(for: selectedPhoto)
+//        cell.faveCellView = self
+//        return cell
+//    }
+//}
 
+
+//MARK: LongPress
 extension FaveVC: faveCell{
     func didLongPress(_ faveCell: FaveCVC) {
-        guard let indexPath = collectionView.indexPath(for: faveCell) else {
+        guard let indexPath = favoriteTableView.indexPath(for: faveCell) else {
             return
         }
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -88,21 +118,22 @@ extension FaveVC: faveCell{
         loadFaves()
 }
 }
-extension FaveVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 10
-        let maxWidth = UIScreen.main.bounds.size.width
-        let numberOfItems: CGFloat = 3
-        let totalSpace: CGFloat = numberOfItems * itemSpacing
-        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
-        return CGSize(width: itemWidth, height: itemWidth)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1, left: 10, bottom: 1, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-}
+//MARK: Delegate
+//extension FaveVC: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let itemSpacing: CGFloat = 10
+//        let maxWidth = UIScreen.main.bounds.size.width
+//        let numberOfItems: CGFloat = 3
+//        let totalSpace: CGFloat = numberOfItems * itemSpacing
+//        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
+//        return CGSize(width: itemWidth, height: itemWidth)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 1, left: 10, bottom: 1, right: 10)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 1
+//    }
+//}

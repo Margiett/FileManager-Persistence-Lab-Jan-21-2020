@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var photoCollection: UICollectionView!
     
-    var photos = [Pictures]()
+//    var photos = [Pictures]()
     
     var searchQuery = "photo" {
         didSet{
@@ -37,10 +37,10 @@ class ViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           if segue.identifier == "photos" {
-              guard let detailVC = segue.destination as? DetailVC, let indexPath = photoCollection.indexPathsForSelectedItems?.first else {
+              guard let detailVC = segue.destination as? DetailVC, let indexPath = photoCollection.indexPathsForSelectedItems else {
                   fatalError("segue did not work")
               }
-              detailVC.selectedPhoto = photos[indexPath.row]
+            detailVC.selectedPhoto = photoDidSet[indexPath.first!.row]
           }
       }
     
