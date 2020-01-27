@@ -178,6 +178,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="downloadsLabel" destination="7hG-9l-h2A" id="Xga-0v-fSW"/>
+                                            <outlet property="imagePhoto" destination="ogu-wj-9LU" id="TvE-ff-lBI"/>
+                                            <outlet property="viewsLabel" destination="l1V-Cf-PEC" id="opc-Xg-YB8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -192,6 +197,9 @@
                         <viewLayoutGuide key="safeArea" id="QUJ-qw-0mN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorite " id="4Ed-8U-yAg"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="G2a-kh-hgl" id="eBE-Di-HmR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXO-w8-wmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

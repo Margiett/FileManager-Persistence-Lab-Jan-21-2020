@@ -13,8 +13,9 @@ protocol faveCell: AnyObject {
 
 }
 class FaveCVC: UITableViewCell {
-    
     @IBOutlet weak var imagePhoto: UIImageView!
+    @IBOutlet weak var viewsLabel: UILabel!
+    @IBOutlet weak var downloadsLabel: UILabel!
     
     weak var faveCellView: faveCell?
     
