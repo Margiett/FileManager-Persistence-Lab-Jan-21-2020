@@ -33,7 +33,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         searchPhoto()
         photoCollection.delegate = self
-        photoCollection.dataSource = self 
+        photoCollection.dataSource = self
+        searchBar.delegate = self
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           if segue.identifier == "photos" {
@@ -46,12 +47,13 @@ class ViewController: UIViewController {
     
     
     func searchPhoto(){
-        PhotoAPIClient.fetchPhoto(for: "\(searchQuery)", completion: { [weak self] (result) in
+        PhotoAPIClient.fetchPhoto(for: searchQuery, completion: { [weak self] (result) in
             switch result {
             case .failure(let appError):
                 print("error \(appError)")
             case .success(let photos):
                 self?.photoDidSet = photos
+                print(self?.photoDidSet)
                 dump(photos.self)
             }
         })
@@ -61,11 +63,14 @@ class ViewController: UIViewController {
 }
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchQuery = searchBar.text!
+        
+        //searchPhoto()
         searchBar.resignFirstResponder()
     }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchQuery = searchBar.text!
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        searchQuery = searchBar.text!
+//    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -85,11 +90,11 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
-            let interItemSpacing = CGFloat(10)
-            let maxWidth = UIScreen.main.bounds.size.width // device's width
+          let interItemSpacing = CGFloat(1)
+          let maxWidth = UIScreen.main.bounds.size.width // device's width
     //      let maxHeight = UIScreen.main.bounds.size.height
-            let numberOfItems: CGFloat = 3 // items per row
-            let totalSpacing: CGFloat = numberOfItems * interItemSpacing
+            let numberOfItems: CGFloat = 4 // items per row
+           let totalSpacing: CGFloat = numberOfItems * interItemSpacing
             let itemWidth: CGFloat = (maxWidth - totalSpacing) / numberOfItems
             
             //this sizing is so it prints squares.
@@ -97,6 +102,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             
-            return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+            return UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
         }
 }
