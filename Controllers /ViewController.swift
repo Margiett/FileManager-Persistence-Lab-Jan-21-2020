@@ -85,10 +85,10 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
-            let interItemSpacing = CGFloat(1)
+            let interItemSpacing = CGFloat(10)
             let maxWidth = UIScreen.main.bounds.size.width // device's width
     //      let maxHeight = UIScreen.main.bounds.size.height
-            let numberOfItems: CGFloat = 1 // items per row
+            let numberOfItems: CGFloat = 3 // items per row
             let totalSpacing: CGFloat = numberOfItems * interItemSpacing
             let itemWidth: CGFloat = (maxWidth - totalSpacing) / numberOfItems
             
@@ -97,6 +97,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             
-            return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+            return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         }
 }

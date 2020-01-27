@@ -28,13 +28,8 @@ class DetailVC: UIViewController {
     }
     
     func loadData(){
-        //        guard let photoData = selectedPhoto else {
-        //            fatalError("segue did not work")
-        //        }
-        
-        //let imageURL = "https://pixabay.com/api/?key=14991998-9d3da7e6735e6158dc94cd4b2&q="
-        
-        
+
+            
         //MARK: Labels
         likesLabel.text = "Likes: \(selectedPhoto?.likes ?? 1)"
         favoritesLabel.text = "Favorited: \(selectedPhoto?.favorites ?? 1)"

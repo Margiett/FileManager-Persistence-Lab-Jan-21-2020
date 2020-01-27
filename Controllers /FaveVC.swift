@@ -12,13 +12,6 @@ class FaveVC: UIViewController {
     @IBOutlet weak var favoriteTableView: UITableView!
     
     var favorite = [Pictures]()
-//        didSet{
-//            DispatchQueue.main.async {
-////                self.loadFaves()
-//        self.collectionView.reloadData()
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +21,10 @@ class FaveVC: UIViewController {
         loadFaves()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        loadFaves()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        loadFaves()
+//    }
     //MARK: loadsFaves()
     func loadFaves() {
         do {
@@ -43,15 +36,6 @@ class FaveVC: UIViewController {
             self.favoriteTableView.reloadData()
         }
     }
-    //MARK: Segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "favorites" {
-//            guard let detailVC = segue.destination as? DetailVC, let indexPath = favoriteTableView.indexPath(for: faveCell).first else {
-//                fatalError("segue did not work")
-//            }
-//            detailVC.selectedPhoto = favorite[indexPath.row]
-//        }
-//    }
 }
 //MARK: DataSource
 extension FaveVC: UITableViewDataSource {
@@ -76,21 +60,6 @@ extension FaveVC: UITableViewDelegate {
     }
 }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return favorite.count
-//    }
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withReuseIdentifier: "FaveCell", for: indexPath) as? FaveCVC else {
-//            fatalError("could not type cast cell")
-//        }
-//        let selectedPhoto = favorite[indexPath.row]
-//        cell.configureCell(for: selectedPhoto)
-//        cell.faveCellView = self
-//        return cell
-//    }
-//}
-
-
 //MARK: LongPress
 extension FaveVC: faveCell{
     func didLongPress(_ faveCell: FaveCVC) {
@@ -119,22 +88,3 @@ extension FaveVC: faveCell{
         loadFaves()
 }
 }
-//MARK: Delegate
-//extension FaveVC: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let itemSpacing: CGFloat = 10
-//        let maxWidth = UIScreen.main.bounds.size.width
-//        let numberOfItems: CGFloat = 3
-//        let totalSpace: CGFloat = numberOfItems * itemSpacing
-//        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
-//        return CGSize(width: itemWidth, height: itemWidth)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 1, left: 10, bottom: 1, right: 10)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1
-//    }
-//}

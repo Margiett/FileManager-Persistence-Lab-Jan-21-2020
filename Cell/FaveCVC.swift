@@ -16,6 +16,8 @@ class FaveCVC: UITableViewCell {
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var downloadsLabel: UILabel!
+    @IBOutlet weak var userLabel:UILabel!
+    
     
     weak var faveCellView: faveCell?
     
@@ -42,6 +44,10 @@ class FaveCVC: UITableViewCell {
     
     func configureCell(for fave: Pictures) {
         print("testing")
+        userLabel.text = "User: \(fave.user)"
+        viewsLabel.text = "Views: \(fave.views.description)"
+        downloadsLabel.text = "Downloads: \(fave.downloads.description)"
+        
         imagePhoto.getImage(with: fave.largeImageURL) { [weak self] (result) in
             switch result {
             case .failure:
